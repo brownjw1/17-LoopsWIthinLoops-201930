@@ -81,9 +81,43 @@ def draw_L(window, circle, r, c):
     and m and n are small, positive integers.
     """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #     The testing code is already written for you (above).
     # -------------------------------------------------------------------------
+    #Long Side
+    radius=circle.radius
+    original_x=circle.center.x
+    original_y=circle.center.y
+    x=original_x
+    y=original_y
+    for j in range(r+3):  # Loop through the rows
+        for k in range(3):
+            newCircle=rg.Circle(rg.Point(x,y),radius)
+            newCircle.fill_color=circle.fill_color
+            newCircle.attach_to(window)
+            window.render(0.1)
+            x+=radius*2
+        y+=radius*2
+        x=original_x
+
+    #Bottom Leg
+    botX=original_x+(3*radius*2)
+    ogX=botX
+    botY=original_y+(r*radius*2)
+    for j in range(3):
+        for k in range(c):
+            newCircle=rg.Circle(rg.Point(botX,botY),radius)
+            newCircle.fill_color=circle.fill_color
+            newCircle.attach_to(window)
+            window.render(0.1)
+            botX+=radius*2
+        botY+=radius*2
+        botX=ogX
+
+
+
+
+
 
 
 def run_test_draw_wall_on_right():
@@ -122,9 +156,24 @@ def draw_wall_on_right(rectangle, n, window):
     and n is a small, positive integer.
     """
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #     The testing code is already written for you (above).
     # -------------------------------------------------------------------------
+
+    originalx=rectangle.corner_1.x
+    originaly=rectangle.corner_1.y
+    x=originalx
+    y=originaly
+    width=rectangle.get_width()
+    height=rectangle.get_height()
+    for r in range(n+1):
+        for c in range(r):
+            rect=rg.Rectangle(rg.Point(x,y),rg.Point(x-width,y+height))
+            rect.attach_to(window)
+            window.render(0.1)
+            x-=width
+        y+=height
+        x=originalx
 
 
 # -----------------------------------------------------------------------------
